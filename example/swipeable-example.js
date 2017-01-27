@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {StyleSheet, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import Swipeable from 'react-native-swipeable';
 
 export default function SwipeableExample() {
@@ -8,6 +8,7 @@ export default function SwipeableExample() {
       <Example1/>
       <Example2/>
       <Example3/>
+      <Example4/>
     </View>
   );
 }
@@ -105,6 +106,33 @@ class Example3 extends Component {
   }
 }
 
+function Example4() {
+  return (
+    <Swipeable
+      rightButtons={[
+        <RowAction><Text>1</Text></RowAction>,
+        <RowAction><Text>2</Text></RowAction>
+      ]}
+    >
+      <View style={[styles.listItem, {backgroundColor: 'khaki'}]}>
+        <Text>Example 4</Text>
+      </View>
+    </Swipeable>
+  );
+}
+
+function RowAction(props) {
+  return (
+    <TouchableHighlight style={{flex: 1}} onPress={props.onPress}>
+      <View style={[styles.button, props.style]}>
+        <Text style={[styles.buttonText, props.textStyle]}>
+          {props.children}
+        </Text>
+      </View>
+    </TouchableHighlight>
+  )
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -126,5 +154,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 20
   },
-
+  button: {
+    paddingHorizontal: 20,
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#aaa',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  buttonText: {
+    color: 'white'
+  }
 });
