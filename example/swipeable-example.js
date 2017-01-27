@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {StyleSheet, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import Swipeable from 'react-native-swipeable';
 
